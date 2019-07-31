@@ -10,6 +10,7 @@
     <modules>
         <module>springmvc-dump</module>
         <module>algorithm</module>
+        <module>java-ext-research</module>
     </modules>
     <name>java-toy</name>
     <packaging>pom</packaging>
