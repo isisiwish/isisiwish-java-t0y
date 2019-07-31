@@ -13,6 +13,7 @@
         <module>java-ext-research</module>
         <module>jvm-research</module>
         <module>java-utils</module>
+        <module>testng-research</module>
     </modules>
     <name>java-toy</name>
     <packaging>pom</packaging>

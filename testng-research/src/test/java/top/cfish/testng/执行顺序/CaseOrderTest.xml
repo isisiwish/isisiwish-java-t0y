@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="TestNGSuite">
+    <test name="TestNGTest">
+        <classes>
+            <class name="top.cfish.testng.执行顺序.CaseOrderTest">
+                <methods>
+                    <include name="testMethodB"/>
+                    <include name="testMethodC"/>
+                    <include name="testMethodA"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <!--<listeners>-->
+        <!--<listener class-name="top.cfish.testng.report.ReporterListenerImpl"/>-->
+    <!--</listeners>-->
+</suite>
