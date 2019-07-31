@@ -1,0 +1,42 @@
+E:\Me\jvm-research\src\main\java\top\cfish\jvm\research>javap -c JVM_01_HelloWorldTest
+
+警告: 二进制文件JVM_01_HelloWorldTest包含top.cfish.jvm.research.JVM_01_HelloWorldTest
+Compiled from "JVM_01_HelloWorldTest.java"
+
+public class top.cfish.jvm.research.JVM_01_HelloWorldTest {
+
+  // 无参构造方法(未写，默认生成）
+  public top.cfish.jvm.research.JVM_01_HelloWorldTest();
+    Code:
+       // aload_0操作码是aload_x格式操作码中的一个
+       // 用于将对象引用加载到操作数栈
+       // x表示正在被访问的局部变量数组的位置
+       // 非静态方法（成员方法）默认参数（第一个参数）也即this
+       // aload_0即把this入栈
+       0: aload_0
+
+       // Method java/lang/Object."<init>":()V
+       // invokespecial指令调用实例初始化方法、私有方法、父类方法
+       // #1指的是常量池中的第一个
+       // 这里是方法引用java/lang/Object."<init>":()V，也即构造方法
+       1: invokespecial #1
+
+       // return操作码属于ireturn、lreturn、freturn、dreturn、areturn、return操作码组中的一个
+       // 没有前缀类型字母的return，表示返回void；i表示int返回整数，l表示long，f表示float，d表示double，a表示对象引用
+       4: return
+
+  public static void main(java.lang.String[]);
+    Code:
+       // getstatic获取指定类的静态域，并将其值压入栈顶
+       // #2代表常量池中的第2个，这里表示的是java/lang/System.out:Ljava/io/PrintStream;
+       // 其实就是java.lang.System类的静态变量out（类型是PrintStream）
+       0: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+
+       // ldc用于将常量从运行时常量池压栈到操作数栈，#3代表常量池的第三个（字符串Hello World）
+       3: ldc           #3                  // String Hello World
+
+       // invokevirutal指令调用一个对象的实例方法，#4表示PrintStream.println(String)函数引用，并把栈顶两个元素出栈
+       5: invokevirtual #4                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+
+       8: return
+}

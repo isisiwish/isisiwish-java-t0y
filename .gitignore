@@ -15,7 +15,6 @@ gist/
 
 # java ignore
 target/
-*.class
 *.jar
 *.war
 *.zip

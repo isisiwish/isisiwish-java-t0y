@@ -1,0 +1,123 @@
+E:\Me\jvm-research\src\main\java\top\cfish\jvm\research\JVM_03>javap -l -p -v JVM_03_SwitchTest
+
+警告: 二进制文件JVM_03_SwitchTest包含top.cfish.jvm.research.JVM_03.JVM_03_SwitchTest
+
+Classfile /E:/Me/jvm-research/src/main/java/top/cfish/jvm/research/JVM_03/JVM_03_SwitchTest.class
+  Last modified 2019-6-10; size 606 bytes
+  MD5 checksum 9db4052023b607e88c2f0ef04ddd6dd9
+  Compiled from "JVM_03_SwitchTest.java"
+
+public class top.cfish.jvm.research.JVM_03.JVM_03_SwitchTest
+  minor version: 0
+  major version: 52
+  flags: ACC_PUBLIC, ACC_SUPER
+Constant pool:
+   #1 = Methodref          #6.#18         // java/lang/Object."<init>":()V
+   #2 = Methodref          #5.#19         // top/cfish/jvm/research/JVM_03/JVM_03_SwitchTest.chooseNear:(I)I
+   #3 = Fieldref           #20.#21        // java/lang/System.out:Ljava/io/PrintStream;
+   #4 = Methodref          #22.#23        // java/io/PrintStream.println:(I)V
+   #5 = Class              #24            // top/cfish/jvm/research/JVM_03/JVM_03_SwitchTest
+   #6 = Class              #25            // java/lang/Object
+   #7 = Utf8               <init>
+   #8 = Utf8               ()V
+   #9 = Utf8               Code
+  #10 = Utf8               LineNumberTable
+  #11 = Utf8               chooseNear
+  #12 = Utf8               (I)I
+  #13 = Utf8               StackMapTable
+  #14 = Utf8               main
+  #15 = Utf8               ([Ljava/lang/String;)V
+  #16 = Utf8               SourceFile
+  #17 = Utf8               JVM_03_SwitchTest.java
+  #18 = NameAndType        #7:#8          // "<init>":()V
+  #19 = NameAndType        #11:#12        // chooseNear:(I)I
+  #20 = Class              #26            // java/lang/System
+  #21 = NameAndType        #27:#28        // out:Ljava/io/PrintStream;
+  #22 = Class              #29            // java/io/PrintStream
+  #23 = NameAndType        #30:#31        // println:(I)V
+  #24 = Utf8               top/cfish/jvm/research/JVM_03/JVM_03_SwitchTest
+  #25 = Utf8               java/lang/Object
+  #26 = Utf8               java/lang/System
+  #27 = Utf8               out
+  #28 = Utf8               Ljava/io/PrintStream;
+  #29 = Utf8               java/io/PrintStream
+  #30 = Utf8               println
+  #31 = Utf8               (I)V
+{
+  public top.cfish.jvm.research.JVM_03.JVM_03_SwitchTest();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 8: 0
+
+  public static int chooseNear(int);
+    descriptor: (I)I
+    flags: ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: iload_0
+         1: tableswitch   { // 100 to 104
+                     100: 36
+                     101: 38
+                     102: 42
+                     103: 42
+                     104: 40
+                 default: 42
+            }
+
+        // return 0;
+        36: iconst_0
+        37: ireturn
+
+        // return 1;
+        38: iconst_1
+        39: ireturn
+
+
+        // return 4;
+        40: iconst_4
+        41: ireturn
+
+        // return -1;
+        42: iconst_m1
+        43: ireturn
+      LineNumberTable:
+        line 12: 0
+        line 15: 36
+        line 17: 38
+        line 19: 40
+        line 21: 42
+      StackMapTable: number_of_entries = 4
+        frame_type = 36 /* same */
+        frame_type = 1 /* same */
+        frame_type = 1 /* same */
+        frame_type = 1 /* same */
+
+  public static void main(java.lang.String[]);
+    descriptor: ([Ljava/lang/String;)V
+    flags: ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=3, args_size=1
+         0: bipush        101
+         2: istore_1
+         3: iload_1
+         4: invokestatic  #2                  // Method chooseNear:(I)I
+         7: istore_2
+         8: getstatic     #3                  // Field java/lang/System.out:Ljava/io/PrintStream;
+        11: iload_2
+        12: invokevirtual #4                  // Method java/io/PrintStream.println:(I)V
+        15: return
+      LineNumberTable:
+        line 27: 0
+        line 28: 3
+        line 29: 8
+        line 30: 15
+}
+
+
+

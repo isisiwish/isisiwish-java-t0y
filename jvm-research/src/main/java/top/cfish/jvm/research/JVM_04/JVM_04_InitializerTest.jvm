@@ -1,0 +1,21 @@
+E:\Me\jvm-research\src\main\java\top\cfish\jvm\research\JVM_04>javap -c JVM_04_InitializerTest
+
+警告: 二进制文件JVM_04_InitializerTest包含top.cfish.jvm.research.JVM_04.JVM_04_InitializerTest
+
+Compiled from "JVM_04_InitializerTest.java"
+
+public class top.cfish.jvm.research.JVM_04.JVM_04_InitializerTest {
+  public top.cfish.jvm.research.JVM_04.JVM_04_InitializerTest();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void main(java.lang.String[]);
+    Code:
+       0: new           #2                  // class top/cfish/jvm/research/JVM_04/JVM_04_InitializerTest
+       3: dup
+       4: invokespecial #3                  // Method "<init>":()V
+       7: astore_1
+       8: return
+}
