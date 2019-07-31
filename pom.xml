@@ -7,6 +7,9 @@
     <groupId>top.cfish</groupId>
     <artifactId>java-toy</artifactId>
     <version>0.0.1</version>
+    <modules>
+        <module>springmvc-dump</module>
+    </modules>
     <name>java-toy</name>
     <packaging>pom</packaging>
 
