@@ -9,6 +9,7 @@
     <version>0.0.1</version>
     <modules>
         <module>springmvc-dump</module>
+        <module>algorithm</module>
     </modules>
     <name>java-toy</name>
     <packaging>pom</packaging>
