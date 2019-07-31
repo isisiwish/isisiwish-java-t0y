@@ -14,6 +14,7 @@
         <module>jvm-research</module>
         <module>java-utils</module>
         <module>testng-research</module>
+        <module>spider</module>
     </modules>
     <name>java-toy</name>
     <packaging>pom</packaging>
