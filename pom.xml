@@ -12,6 +12,7 @@
         <module>algorithm</module>
         <module>java-ext-research</module>
         <module>jvm-research</module>
+        <module>java-utils</module>
     </modules>
     <name>java-toy</name>
     <packaging>pom</packaging>
