@@ -1,0 +1,51 @@
+# private file
+logs/
+gist/
+*.log
+*.doc
+*.docx
+*.ppt
+*.pptx
+*.key
+*.xls
+*.xlsx
+
+# java ignore
+target/
+*.class
+*.jar
+*.war
+*.zip
+*.tar
+*.gz
+
+# cpp ignore
+*.o
+*.out
+*.gch
+
+# eclipse ignore
+.settings/
+.project
+.classpath
+
+# idea ignore
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# temp ignore
+*.cache
+*.diff
+*.patch
+*.tmp
+
+# system ignore
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
