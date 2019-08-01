@@ -1,5 +1,7 @@
 package top.cfish.algorithm.tree.bstree;
 
+import top.cfish.algorithm.inface.ITree;
+
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
@@ -8,13 +10,16 @@ import java.util.Stack;
  * @author: isisiwish
  * @date: 2018/9/4
  * @time: 7:15
- * 二分搜索树
- * 父亲结点大于左子树所有结点
- * 父亲节点小于右子树所有结点
- *
- * 此次实现不包含重复元素
  */
-public class BSTree<T extends Comparable<T>>
+
+/**
+ * BinarySearchTree-二叉搜索树
+ * 父亲节点大于左子树所有节点的值
+ * 父亲节点小于右子树所有节点的值
+ *
+ * 本代码实现不包含重复元素
+ */
+public class BSTree<T extends Comparable<T>> implements ITree<T>
 {
     private class Node
     {
@@ -40,11 +45,13 @@ public class BSTree<T extends Comparable<T>>
     private Node root;
     private int size;
     
+    @Override
     public int getSize()
     {
         return size;
     }
     
+    @Override
     public boolean isEmpty()
     {
         return size == 0;
@@ -52,20 +59,21 @@ public class BSTree<T extends Comparable<T>>
     
     private void add(Node node, T e)
     {
+        // 该树不包含重复元素
         if (e.equals(node.e))
         {
             return;
         }
         else if (e.compareTo(node.e) < 0 && node.left == null)
         {
-            //待插入元素小于结点元素，并且该结点没有左子树，直接插入左子树
+            // 待插入元素小于节点元素，并且该节点没有左子树，直接插入左子树
             node.left = new Node(e);
             size++;
             return;
         }
         else if (e.compareTo(node.e) > 0 && node.right == null)
         {
-            //待插入元素大于结点元素，并且该结点没有右子树，直接插入右子树
+            // 待插入元素大于节点元素，并且该节点没有右子树，直接插入右子树
             node.right = new Node(e);
             size++;
             return;
@@ -82,10 +90,9 @@ public class BSTree<T extends Comparable<T>>
         }
     }
     
-    // 向二分搜索树中添加元素
     public void add(T e)
     {
-        // 对于空树的特殊处理，开辟根节点
+        // 对于空树开辟根节点
         if (root == null)
         {
             root = new Node(e);
@@ -93,15 +100,13 @@ public class BSTree<T extends Comparable<T>>
         }
         else
         {
-            // 递归调用向root结点所在的BST插入元素e
             add(root, e);
         }
     }
     
     private Node addEx(Node node, T e)
     {
-        // 把调用方法的空树逻辑处理融合入递归方法
-        // 并且把递归结束条件统一
+        // 把调用方法的空树逻辑处理融合入递归方法，并且把递归结束条件统一
         if (node == null)
         {
             size++;
@@ -125,7 +130,6 @@ public class BSTree<T extends Comparable<T>>
         root = addEx(root, e);
     }
     
-    // 以node为根的二分搜索树中是否包含元素e
     private boolean contains(Node node, T e)
     {
         if (node == null)
@@ -147,9 +151,21 @@ public class BSTree<T extends Comparable<T>>
         }
     }
     
+    @Override
     public boolean contains(T e)
     {
         return contains(root, e);
+    }
+    
+    private  int getHeight(Node root)
+    {
+        return root == null ? 0 : Math.max(getHeight(root.left), getHeight(root.right)) + 1;
+    }
+    
+    @Override
+    public int getHeight()
+    {
+        return getHeight(root);
     }
     
     private void preOrder(Node node)
@@ -163,13 +179,13 @@ public class BSTree<T extends Comparable<T>>
         preOrder(node.right);
     }
     
-    // 前序遍历
+    // 前序遍历，中左右
     public void preOrder()
     {
         preOrder(root);
     }
     
-    // 前序遍历非递归 - 用栈
+    // 前序遍历非递归 - 栈
     public void preOrderNR()
     {
         if (root == null)
@@ -258,7 +274,7 @@ public class BSTree<T extends Comparable<T>>
         inOrder(node.right);
     }
     
-    // 中序遍历
+    // 中序遍历，左中右
     public void inOrder()
     {
         inOrder(root);
@@ -327,16 +343,19 @@ public class BSTree<T extends Comparable<T>>
         System.out.print(node.e + " ");
     }
     
-    // 后序遍历
+    // 后序遍历，左右中
     public void postOrder()
     {
         postOrder(root);
     }
     
-    // 后序遍历非递归
+    // todo 后序遍历非递归
     public void postOrderNR()
     {
-    
+        if (isEmpty())
+        {
+            return;
+        }
     }
     
     // 层序遍历
@@ -434,7 +453,6 @@ public class BSTree<T extends Comparable<T>>
         return min;
     }
     
-    
     private Node removeMax(Node node)
     {
         if (node.right == null)
@@ -517,19 +535,14 @@ public class BSTree<T extends Comparable<T>>
     
     public static void main(String[] args)
     {
-        /**
-         5
-         /   \
-         3    6
-         / \    \
-         2  4     8
-         **/
         BSTree<Integer> bst = new BSTree<>();
         int[] arr = {5, 3, 6, 8, 4, 2};
         for (int i : arr)
         {
             bst.add(i);
         }
+        
+        System.out.println("树深度 : " + bst.getHeight());
         
         // 5 3 6 2 4 8
         System.out.print("层序 : ");
@@ -544,11 +557,11 @@ public class BSTree<T extends Comparable<T>>
         System.out.print("前序NR1 : ");
         bst.preOrderNR();
         System.out.print("\n");
-    
+        
         System.out.print("前序NR2 : ");
         bst.preOrderNR2();
         System.out.print("\n");
-    
+        
         System.out.print("前序NR3 : ");
         bst.preOrderNR3();
         System.out.print("\n");
@@ -557,11 +570,11 @@ public class BSTree<T extends Comparable<T>>
         System.out.print("中序 : ");
         bst.inOrder();
         System.out.print("\n");
-    
+        
         System.out.print("中序NR1 : ");
         bst.inOrderNR();
         System.out.print("\n");
-    
+        
         System.out.print("中序NR2 : ");
         bst.inOrderNR2();
         System.out.print("\n");
