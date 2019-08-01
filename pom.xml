@@ -15,6 +15,9 @@
         <module>java-utils</module>
         <module>testng-research</module>
         <module>spider</module>
+        <module>java-parser</module>
+        <module>application-context-helper</module>
+        <module>basic-sso</module>
     </modules>
     <name>java-toy</name>
     <packaging>pom</packaging>
