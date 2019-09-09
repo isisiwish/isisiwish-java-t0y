@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.cfish.spider.mapper.ImgMapMapper">
+  <resultMap id="BaseResultMap" type="top.cfish.spider.domain.ImgMap">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="original_img_url" jdbcType="VARCHAR" property="originalImgUrl" />
+    <result column="cdn_img_url" jdbcType="VARCHAR" property="cdnImgUrl" />
+    <result column="img_md5" jdbcType="VARCHAR" property="imgMd5" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="width" jdbcType="INTEGER" property="width" />
+    <result column="height" jdbcType="INTEGER" property="height" />
+    <result column="size" jdbcType="INTEGER" property="size" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, original_img_url, cdn_img_url, img_md5, create_time, update_time, width, height, 
+    `size`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from img_map
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from img_map
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="top.cfish.spider.domain.ImgMap">
+    insert into img_map (id, original_img_url, cdn_img_url, 
+      img_md5, create_time, update_time, 
+      width, height, `size`
+      )
+    values (#{id,jdbcType=INTEGER}, #{originalImgUrl,jdbcType=VARCHAR}, #{cdnImgUrl,jdbcType=VARCHAR}, 
+      #{imgMd5,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{width,jdbcType=INTEGER}, #{height,jdbcType=INTEGER}, #{size,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="top.cfish.spider.domain.ImgMap">
+    insert into img_map
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="originalImgUrl != null">
+        original_img_url,
+      </if>
+      <if test="cdnImgUrl != null">
+        cdn_img_url,
+      </if>
+      <if test="imgMd5 != null">
+        img_md5,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="width != null">
+        width,
+      </if>
+      <if test="height != null">
+        height,
+      </if>
+      <if test="size != null">
+        `size`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="originalImgUrl != null">
+        #{originalImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="cdnImgUrl != null">
+        #{cdnImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="imgMd5 != null">
+        #{imgMd5,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="width != null">
+        #{width,jdbcType=INTEGER},
+      </if>
+      <if test="height != null">
+        #{height,jdbcType=INTEGER},
+      </if>
+      <if test="size != null">
+        #{size,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="top.cfish.spider.domain.ImgMap">
+    update img_map
+    <set>
+      <if test="originalImgUrl != null">
+        original_img_url = #{originalImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="cdnImgUrl != null">
+        cdn_img_url = #{cdnImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="imgMd5 != null">
+        img_md5 = #{imgMd5,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="width != null">
+        width = #{width,jdbcType=INTEGER},
+      </if>
+      <if test="height != null">
+        height = #{height,jdbcType=INTEGER},
+      </if>
+      <if test="size != null">
+        `size` = #{size,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="top.cfish.spider.domain.ImgMap">
+    update img_map
+    set original_img_url = #{originalImgUrl,jdbcType=VARCHAR},
+      cdn_img_url = #{cdnImgUrl,jdbcType=VARCHAR},
+      img_md5 = #{imgMd5,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      width = #{width,jdbcType=INTEGER},
+      height = #{height,jdbcType=INTEGER},
+      `size` = #{size,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
