@@ -7,11 +7,6 @@ package top.cfish.lintcode;
  */
 public class Solution_0003
 {
-    /**
-     * @param k: An integer
-     * @param n: An integer
-     * @return: An integer denote the count of digit k in 1..n
-     */
     static public int digitCounts(int k, int n)
     {
         StringBuilder sb = new StringBuilder();
