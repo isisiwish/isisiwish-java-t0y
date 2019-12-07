@@ -1,11 +1,23 @@
 package top.cfish.hw.util;
 
+import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
+import org.apache.commons.lang.CharSetUtils;
+import org.apache.commons.lang.StringUtils;
 import org.junit.Assert;
 import org.junit.Test;
 
-import javax.xml.transform.Source;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.TreeSet;
 
 /**
  * @author: isisiwish
@@ -174,8 +186,120 @@ public class StringTest {
     public void substringTest() {
         String str = "hello world";
         String substringA = str.substring(1);
-        String substringB = str.substring(1, 3);//[1, 3)
+        // [1, 3)
+        String substringB = str.substring(1, 3);
         System.out.println(substringA);
         System.out.println(substringB);
+    }
+
+    @Test
+    public void isBlankTest() {
+        boolean rs = StringUtils.isBlank("\t \n \f \r");
+        System.out.println(rs);
+    }
+
+    // 非字符作为分割
+    @Test
+    public void splitTestA() {
+        String str = "hello,,, world! one..two .-three 4";
+        String[] split = str.split("[\\W]+");
+        System.out.println(split.length);
+        for (String s : split) {
+            System.out.println(s);
+        }
+    }
+
+    // 空白字符作为分割，包括空格、制表符、换页符，等价于[\f\n\r\t\v]。
+    @Test
+    public void splitTestB() {
+        String str = "hello,,, world! one..\ttwo .-three 4";
+        String[] split = str.split("\\s");
+        System.out.println(split.length);
+        for (String s : split) {
+            System.out.println(s);
+        }
+    }
+
+    // 数字作为分割
+    @Test
+    public void splitTestC() {
+        String ss = "aa12sas32sasa223sas12as12wqe";
+        String[] array = ss.split("[\\d]+");
+        System.out.println(Arrays.toString(array));
+    }
+    // 标准输入
+    @Test
+    public void inputTest() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("请输入:");
+        String str = sc.next();
+        System.out.println(str);
+    }
+
+    // 逗号分割，多个空格分割
+    @Test
+    public void splitTestD() {
+        String ss = "aa,,sas,,sasa,,,,sasas,,,";
+        String[] array = ss.split("[,]+");
+        System.out.println(Arrays.toString(array));
+
+        String s2 = "aa  sas sa sa     sas  as  ";
+        String[] split = s2.split("[\\s]+");
+        System.out.println(Arrays.toString(split));
+    }
+
+    // TreeSet测试 最终有序
+    @Test
+    public void treeSetTest() {
+        TreeSet set = new TreeSet();
+        set.add(1);
+        set.add(3);
+        set.add(2);
+        System.out.println(set);
+    }
+
+    // LinkedHashSet测试 插入有序
+    @Test
+    public void linkedHashSet() {
+        LinkedHashSet set = new LinkedHashSet();
+        set.add(1);
+        set.add(3);
+        set.add(2);
+        set.add(3);
+        System.out.println(set);
+    }
+
+    public static void main(String[] args) {
+        String str = "abbbdcdc123";
+        Map<Character, Integer> map = new LinkedHashMap();
+
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (Character.isLetter(ch)) {
+                if (map.containsKey(ch)) {
+                    map.put(ch, map.get(ch) + 1);
+                } else {
+                    map.put(ch, 1);
+                }
+            }
+        }
+
+        // for (Character key : map.keySet()) {
+        //     System.out.println(key + "=" + map.get(key));
+        // }
+
+        // 将map.entrySet()转换成list
+        List<Map.Entry<Character, Integer>> list = new ArrayList<Map.Entry<Character, Integer>>(map.entrySet());
+        // 通过比较器实现排序
+        Collections.sort(list,new Comparator<Map.Entry<Character, Integer>>() {
+            @Override
+            public int compare(Map.Entry<Character, Integer> o1, Map.Entry<Character, Integer> o2) {
+                return o2.getValue().compareTo(o1.getValue());
+            }
+        });
+
+        for(Map.Entry<Character, Integer> mapping:list){
+            System.out.println(mapping.getKey()+"="+mapping.getValue());
+        }
     }
 }
