@@ -1,7 +1,5 @@
 package top.cfish.hw.util;
 
-import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
-import org.apache.commons.lang.CharSetUtils;
 import org.apache.commons.lang.StringUtils;
 import org.junit.Assert;
 import org.junit.Test;
