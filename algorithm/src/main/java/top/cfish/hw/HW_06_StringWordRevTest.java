@@ -4,10 +4,10 @@ import java.util.Scanner;
 
 /**
  * @author: isisiwish
- * @date: 2019/12/5 0005
+ * @date: 2019/12/5
  * @time: 22:01
  */
-public class StringWordRevTest
+public class HW_06_StringWordRevTest
 {
     public static String stringWordRev(String str)
     {
