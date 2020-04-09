@@ -1,5 +1,6 @@
 package top.cfish.hw.util;
 
+
 import sun.misc.BASE64Decoder;
 
 import java.util.ArrayList;
@@ -8,12 +9,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * @author: isisiwih
+ * @author: isisiwish
  * @date: 2019/12/6
- * @time: 21:53
+ * @time: 10:31
  */
-public class IsisiwishStringUtils {
 
+public class StringUtil {
     // 空字符串
     public static final String EMPTY_STRING = "";
 
@@ -141,9 +142,9 @@ public class IsisiwishStringUtils {
 
     /**
      * 将字符串按空白字符分割
-     *
+     * <p>
      * 分隔符不会出现在目标数组中，连续的分隔符被看作一个，如果字符串为null，则返回null
-     *
+     * <p>
      * StringUtil.split(null)       = null
      * StringUtil.split("")         = []
      * StringUtil.split("abc def")  = ["abc", "def"]
@@ -159,9 +160,9 @@ public class IsisiwishStringUtils {
 
     /**
      * 将字符串按指定字符分割
-     *
+     * <p>
      * 分隔符不会出现在目标数组中，连续的分隔符被看作一个，如果字符串为null，则返回null
-     *
+     * <p>
      * StringUtil.split(null, *)         = null
      * StringUtil.split("", *)           = []
      * StringUtil.split("a.b.c", '.')    = ["a", "b", "c"]
@@ -224,9 +225,5 @@ public class IsisiwishStringUtils {
             }
         }
         return result;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(isPhone("13991143296"));
     }
 }
