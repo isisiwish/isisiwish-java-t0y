@@ -1,0 +1,5 @@
+mvn install -Dmaven.test.skip=true -Pdev
+
+grep -vE 'SendToAgentRunner - apimonitor api|dubbo version: 2.8.3.2, current host: 10.255.242'
+
+ntpdate cn.pool.ntp.org
